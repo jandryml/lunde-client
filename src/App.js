@@ -1,5 +1,5 @@
 import './App.css';
-import RequestForm from "./component/request-form.component";
+import RequestForm from "./component/request-form/request-form.component";
 
 function App() {
     return (

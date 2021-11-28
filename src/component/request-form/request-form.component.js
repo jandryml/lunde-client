@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
-import {getAllRequestTypes} from '../data-service/RequestType.service';
-import {createRequest} from '../data-service/Request.service';
+import {getAllRequestTypes} from '../../data-service/RequestType.service';
+import {createRequest} from '../../data-service/Request.service';
 import "./request-form.styles.css";
 
 function RequestForm() {
@@ -17,12 +17,16 @@ function RequestForm() {
         getAllRequestTypes().then((result) => {
             setRequestTypes(result.data);
         }).catch((error) => {
+            alert('Error connecting to server!');
             console.error(error);
         })
     }, []);
 
     const onSubmit = (data) => {
-        createRequest(data).catch((error) => {
+        createRequest(data).then(() => {
+            alert('Request successfully send!');
+        }).catch((error) => {
+            alert('Error when saving request!');
             console.error(error);
         })
     };
