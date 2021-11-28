@@ -15,7 +15,7 @@ function RequestForm() {
 
     useEffect(() => {
         getAllRequestTypes().then((result) => {
-            setRequestTypes(result.data)
+            setRequestTypes(result.data);
         }).catch((error) => {
             console.error(error);
         })
@@ -31,8 +31,8 @@ function RequestForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
 
             <label>Kind of request</label>
-            <select {...register("requestTypeId", {pattern: /^[^-1]$/i})}>
-                <option value={-1} selected="selected" hidden="hidden">Choose here</option>
+            <select defaultValue={-1} {...register("requestTypeId", {pattern: /^[^-1]$/i})}>
+                <option value={-1} hidden="hidden">Choose here</option>
                 {requestTypes &&
                 requestTypes
                     .map((requestType) => (
